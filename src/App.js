@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { updateCurrent } from './Reducers/Todo';
 import logo from './logo.svg';
 import './App.css';
 
@@ -15,18 +16,15 @@ class App extends Component {
           <h1 className="App-title">Hello World</h1>
         </header>
         <div className="todo-app">
-          <TodoForm
-            changeCurrent={this.props.changeCurrent}
-            currentTodo={this.props.currentTodo}
-          />
-          <TodoList todos={this.props.todos} />
+          <TodoForm changeCurrent={this.props.updateCurrent} currentTodo={this.props.currentTodo} />
+          <TodoList />
         </div>
       </div>
     );
   }
 }
 
-// export default App;
-const mapStateToProps = state => state;
-const ConnectedApp = connect(mapStateToProps)(App);
-export default ConnectedApp;
+export default connect(
+  state => state,
+  { updateCurrent }
+)(App);

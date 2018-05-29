@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchTodos } from '../Reducers/Todo';
 
 const TodoItem = ({ id, name, isComplete }) => (
   <li key={id}>
@@ -7,8 +9,19 @@ const TodoItem = ({ id, name, isComplete }) => (
   </li>
 );
 
-export default props => (
-  <div className="todo-list">
-    <ul>{props.todos.map(todo => <TodoItem {...todo} />)}</ul>
-  </div>
-);
+class TodoList extends Component {
+  componentDidMount() {
+    this.props.fetchTodos();
+  }
+  render() {
+    return (
+      <div className="todo-list">
+        <ul>{this.props.todos.map(todo => <TodoItem key={todo.id} {...todo} />)}</ul>
+      </div>
+    );
+  }
+}
+export default connect(
+  state => ({ todos: state.todos }),
+  { fetchTodos }
+)(TodoList);

@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "name": "Configure something"
+    },
+    {
+      "id": 2,
+      "name": "Configure stuff"
+    },
+    {
+      "id": 3,
+      "name": "Load Stuff."
+    },
+    {
+      "id": 4,
+      "name": "Todo extra stuff"
+    },
+    {
+      "id": 5,
+      "name": "Even more"
+    }
+  ]
+}
