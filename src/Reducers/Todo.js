@@ -1,4 +1,4 @@
-import { getTodos } from '../lib/TodoServices';
+import { getTodos, createTodo } from '../lib/TodoServices';
 
 const initState = {
   todos: [],
@@ -17,6 +17,11 @@ export const updateCurrent = val => ({
 
 export const fetchTodos = () => dispatch => {
   getTodos().then(todos => dispatch(loadTodos(todos)));
+};
+
+export const addTodo = todo => ({ type: TODO_ADD, paload: todo });
+export const saveTodo = name => dispatch => {
+  createTodo(name).then(res => dispatch(addTodo(res)));
 };
 
 export const loadTodos = todos => ({ type: TODOS_LOAD, payload: todos });
